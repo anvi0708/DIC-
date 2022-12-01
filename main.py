@@ -49,8 +49,15 @@ with left_column:
 
 
 
-input_Duration = st.slider('Enter Duration', 0, max(data["Duration"]), 120)
-input_Destination = st.slider('Diagonal width(cm)', 0.0, max(data["Destination"]), 1.0)
+input_Duration = st.slider('Enter Duration', 0, max(data["Duration"]), 200)
+
+st.subheader("Please select relevant features of your Destination")
+left_column, right_column = st.columns(2)
+with left_column:
+    inp_Destination = st.radio(
+        'Name of the Destination',
+        np.unique(data['Destination']))
+
 input_Net_Sales = st.slider('Diagonal width(cm)', 0.0, max(data["Net_Sales"]), 1.0)
 input_Commission = st.slider('Diagonal width(cm)', 0.0, max(data["Commission"]), 1.0)
 input_Age = st.slider('Diagonal width(cm)', 0.0, max(data["Age"]), 1.0)
@@ -60,8 +67,9 @@ if st.button('Make Prediction'):
     input_Agency_Type = encoder.transform(np.expand_dims(inp_Agency_Type, -1))
     input_Dist_Channel = encoder.transform(np.expand_dims(inp_Dist_Channel, -1))
     input_Prod_Name = encoder.transform(np.expand_dims(inp_Prod_Name, -1))
+    input_Destination = encoder.transform(np.expand_dims(inp_Destination, -1))
     inputs = np.expand_dims(
-        [int(input_Agency),int(input_Agency_Type), int(input_Dist_Channel), int(input_Prod_Name), input_Duration, input_Destination, input_Net_Sales, input_Commission, input_Age], 0)
+        [int(input_Agency),int(input_Agency_Type), int(input_Dist_Channel), int(input_Prod_Name), input_Duration, int(input_Destination), input_Net_Sales, input_Commission, input_Age], 0)
     prediction = best_xgboost_model.predict(inputs)
     print("final pred", np.squeeze(claim, -1))
     st.write(f"Your fish weight is: {np.squeeze(claim, -1):.2f}g")
