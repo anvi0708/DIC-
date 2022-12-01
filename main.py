@@ -18,22 +18,19 @@ best_xgboost_model.load_model("best_model.json")
 if st.checkbox('Show Training Dataframe'):
     data
     
- st.subheader("Please select relevant features of your Agency")
+st.subheader("Please select relevant features of your Agency")
 left_column, right_column = st.columns(2)
 with left_column:
-    inp_species = st.radio(
+    inp_Agency = st.radio(
         'Name of the Agency',
         np.unique(data['Agency']))   
     
     
     
-    
-    
-
 st.subheader("Please select relevant features of your Product")
 left_column, right_column = st.columns(2)
 with left_column:
-    inp_species = st.radio(
+    inp_Prod_Name = st.radio(
         'Name of the Product',
         np.unique(data['Prod_Name']))
 
