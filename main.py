@@ -27,11 +27,14 @@ with left_column:
 
 
 input_Agency = st.slider('enter agency name', 0.0, max(data["Agency"]), 1.0)
-input_Length2 = st.slider('Diagonal length(cm)', 0.0, max(data["Length2"]), 1.0)
-input_Length3 = st.slider('Cross length(cm)', 0.0, max(data["Length3"]), 1.0)
-input_Height = st.slider('Height(cm)', 0.0, max(data["Height"]), 1.0)
-input_Width = st.slider('Diagonal width(cm)', 0.0, max(data["Width"]), 1.0)
-
+input_Agency_Type = st.slider('Diagonal length(cm)', 0.0, max(data["Agency_Type"]), 1.0)
+input_Dist_Channel = st.slider('Cross length(cm)', 0.0, max(data["Dist_Channel"]), 1.0)
+input_Prod_Name = st.slider('Height(cm)', 0.0, max(data["Prod_Name"]), 1.0)
+input_Duration = st.slider('Diagonal width(cm)', 0.0, max(data["Duration"]), 1.0)
+input_Destination = st.slider('Diagonal width(cm)', 0.0, max(data["Destination"]), 1.0)
+input_Net_Sales = st.slider('Diagonal width(cm)', 0.0, max(data["Net_Sales"]), 1.0)
+input_Commission = st.slider('Diagonal width(cm)', 0.0, max(data["Commission"]), 1.0)
+input_Age = st.slider('Diagonal width(cm)', 0.0, max(data["Age"]), 1.0)
 
 if st.button('Make Prediction'):
     input_species = encoder.transform(np.expand_dims(inp_species, -1))
