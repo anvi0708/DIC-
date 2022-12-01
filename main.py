@@ -32,6 +32,12 @@ with left_column:
         'Name of the Agency Type',
         np.unique(data['Agency_Type']))   
     
+st.subheader("Please select relevant features of your Dist Channel")
+left_column, right_column = st.columns(2)
+with left_column:
+    inp_Dist_Channel = st.radio(
+        'Name of the Dist Channel',
+        np.unique(data['Dist_Channel']))   
     
     
 st.subheader("Please select relevant features of your Product")
@@ -43,9 +49,6 @@ with left_column:
 
 
 
-
-input_Dist_Channel = st.slider('Cross length(cm)', 0.0, max(data["Dist_Channel"]), 1.0)
-
 input_Duration = st.slider('Diagonal width(cm)', 0.0, max(data["Duration"]), 1.0)
 input_Destination = st.slider('Diagonal width(cm)', 0.0, max(data["Destination"]), 1.0)
 input_Net_Sales = st.slider('Diagonal width(cm)', 0.0, max(data["Net_Sales"]), 1.0)
@@ -55,9 +58,10 @@ input_Age = st.slider('Diagonal width(cm)', 0.0, max(data["Age"]), 1.0)
 if st.button('Make Prediction'):
     input_Agency = encoder.transform(np.expand_dims(inp_Agency, -1))
     input_Agency_Type = encoder.transform(np.expand_dims(inp_Agency_Type, -1))
+    input_Dist_Channel = encoder.transform(np.expand_dims(inp_Dist_Channel, -1))
     input_Prod_Name = encoder.transform(np.expand_dims(inp_Prod_Name, -1))
     inputs = np.expand_dims(
-        [int(input_Agency),int(input_Agency_Type), int(input_Prod_Name), input_Dist_Channel, input_Duration, input_Destination, input_Net_Sales, input_Commission, input_Age], 0)
+        [int(input_Agency),int(input_Agency_Type), int(input_Dist_Channel), int(input_Prod_Name), input_Duration, input_Destination, input_Net_Sales, input_Commission, input_Age], 0)
     prediction = best_xgboost_model.predict(inputs)
     print("final pred", np.squeeze(claim, -1))
     st.write(f"Your fish weight is: {np.squeeze(claim, -1):.2f}g")
