@@ -26,7 +26,7 @@ with left_column:
         np.unique(data['Species']))
 
 
-input_Length1 = st.slider('enter agency name', 0.0, max(data["attribute"]), 1.0)
+input_Agency = st.slider('enter agency name', 0.0, max(data["Agency"]), 1.0)
 input_Length2 = st.slider('Diagonal length(cm)', 0.0, max(data["Length2"]), 1.0)
 input_Length3 = st.slider('Cross length(cm)', 0.0, max(data["Length3"]), 1.0)
 input_Height = st.slider('Height(cm)', 0.0, max(data["Height"]), 1.0)
