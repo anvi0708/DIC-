@@ -49,7 +49,7 @@ with left_column:
 
 
 
-input_Duration = st.slider('Diagonal width(cm)', 0.0, max(data["Duration"]), 1.0)
+input_Duration = st.slider('Enter Duration', 0, max(data["Duration"]), 120)
 input_Destination = st.slider('Diagonal width(cm)', 0.0, max(data["Destination"]), 1.0)
 input_Net_Sales = st.slider('Diagonal width(cm)', 0.0, max(data["Net_Sales"]), 1.0)
 input_Commission = st.slider('Diagonal width(cm)', 0.0, max(data["Commission"]), 1.0)
