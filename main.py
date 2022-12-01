@@ -58,9 +58,9 @@ with left_column:
         'Name of the Destination',
         np.unique(data['Destination']))
 
-input_Net_Sales = st.slider('Diagonal width(cm)', 0.0, max(data["Net_Sales"]), 100.0)
-input_Commission = st.slider('Diagonal width(cm)', 0.0, max(data["Commission"]), 100.0)
-input_Age = st.slider('Diagonal width(cm)', 0, max(data["Age"]), 100)
+input_Net_Sales = st.slider('Enter Net Sales', 0.0, max(data["Net_Sales"]), 100.0)
+input_Commission = st.slider('Enter Commission Value', 0.0, max(data["Commission"]), 100.0)
+input_Age = st.slider('Enter Age', 0, max(data["Age"]), 100)
 
 if st.button('Make Prediction'):
     input_Agency = encoder.transform(np.expand_dims(inp_Agency, -1))
