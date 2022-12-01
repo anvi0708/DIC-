@@ -54,7 +54,7 @@ input_Age = st.slider('Diagonal width(cm)', 0.0, max(data["Age"]), 1.0)
 
 if st.button('Make Prediction'):
     input_Agency = encoder.transform(np.expand_dims(inp_Agency, -1))
-    input_Agency = encoder.transform(np.expand_dims(inp_Agency_Type, -1))
+    input_Agency_Type = encoder.transform(np.expand_dims(inp_Agency_Type, -1))
     input_Prod_Name = encoder.transform(np.expand_dims(inp_Prod_Name, -1))
     inputs = np.expand_dims(
         [int(input_Agency),int(input_Agency_Type), int(input_Prod_Name), input_Dist_Channel, input_Duration, input_Destination, input_Net_Sales, input_Commission, input_Age], 0)
