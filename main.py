@@ -65,10 +65,7 @@ input_Age = st.slider('Enter Age', 0, max(data["Age"]), 100)
 x = data.drop(columns='Claim')
 y = data['Claim']
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20, random_state=1)
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-x_train= scaler.fit_transform(x_train)
-x_test= scaler.fit_transform(x_test)
+
 
 
 xgc = xgb.XGBClassifier()
