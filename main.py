@@ -68,7 +68,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20, random
 
 
 
-xgc = xgb.XGBClassifier()
+xgc = XGBClassifier()
 
 xgc.fit(x_train,y_train)
 
