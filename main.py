@@ -68,7 +68,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20, random
 from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 x_train= scaler.fit_transform(x_train)
-x_test= scaler.transform(x_test)
+x_test= scaler.fit_transform(x_test)
 
 
 xgc = xgb.XGBClassifier()
