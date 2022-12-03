@@ -19,7 +19,7 @@ st.text_input("Enter your Name: ", key="name")
 #Load the final pre-processed dataset on which the models will be trained
 #date pre-processing and cleaning is done in phase-1 with original data
 data = pd.read_csv("dic.csv")
-data['Destination']=LabelEncoder().fit_transform(data['Destination'])
+# data['Destination']=LabelEncoder().fit_transform(data['Destination'])
 # Preview of the datset
 if st.checkbox('Show Training Dataframe'):
     data
@@ -60,6 +60,12 @@ input_Net_Sales = st.slider('Enter Net Sales', 0.0, max(data["Net_Sales"]), 39.0
 input_Commission = st.slider('Enter Commission Value', 0.0, max(data["Commission"]), 42.0)
 input_Age = st.slider('Enter Age', 0, max(data["Age"]), 45)
 input_Duration = st.slider('Enter Duration', 0, max(data["Duration"]), 47)
+
+data['Destination']=LabelEncoder().fit_transform(data['Destination'])
+data['Prod_Name']=LabelEncoder().fit_transform(data['Prod_Name'])
+data['Dist_Channel']=LabelEncoder().fit_transform(data['Dist_Channel'])
+data['Agency_Type']=LabelEncoder().fit_transform(data['Agency_Type'])
+
 
 uploaded_file = st.file_uploader("Upload a dataframe(CSV) similar to the above training dataframe") 
 if uploaded_file is not None:   
